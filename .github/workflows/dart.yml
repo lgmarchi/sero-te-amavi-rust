@@ -1,0 +1,35 @@
+name: Dart CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install dependencies (main package)
+        run: dart pub get
+        working-directory: .
+
+      - name: Analyze (main package)
+        run: dart analyze .
+
+      - name: Run tests (main package)
+        run: dart test .
+
+      - name: Install dependencies (lint package)
+        run: dart pub get
+        working-directory: packages/sero_te_amavi_rust_lint
+
+      - name: Analyze (lint package)
+        run: dart analyze .
+        working-directory: packages/sero_te_amavi_rust_lint

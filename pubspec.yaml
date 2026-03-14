@@ -1,0 +1,15 @@
+name: sero_te_amavi_rust
+version: 1.0.0
+repository: https://github.com/catholic-verse-studios/sero_te_amavi_rust
+documentation: https://github.com/catholic-verse-studios/sero_te_amavi_rust#readme
+license: MIT
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  dartz: ^0.10.1
+
+dev_dependencies:
+  lints: ^4.0.0
+  test: ^1.24.0
