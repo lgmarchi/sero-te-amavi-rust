@@ -3,8 +3,8 @@ version: 0.1.0
 description: >-
   Rust-like extensions for dartz: match, unwrap, ifSome, ifOk, ifErr,
   isSome, isNone, isOk, isErr for Option and Either types.
-repository: https://github.com/catholic-verse-studios/sero_te_amavi_rust
-documentation: https://github.com/catholic-verse-studios/sero_te_amavi_rust#readme
+repository: https://github.com/lgmarchi/sero_te_amavi_rust
+documentation: https://github.com/lgmarchi/sero_te_amavi_rust#readme
 license: MIT
 topics:
   - functional-programming
@@ -12,7 +12,7 @@ topics:
   - option
   - either
   - result
-issue_tracker: https://github.com/catholic-verse-studios/sero_te_amavi_rust/issues
+issue_tracker: https://github.com/lgmarchi/sero_te_amavi_rust/issues
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
