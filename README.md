@@ -32,7 +32,7 @@ Use `Some`, `None`, `Ok`, and `Err` for a Rust-like feel:
 | `expect(msg)` | Like unwrap, custom panic message when None |
 | `unwrapOr(T)` | Value or default |
 | `unwrapOrDefault()` | For int, double, bool, String, List, Map |
-| `isSome` / `isNone` | Boolean getters |
+| `isSome()` / `isNone()` | Boolean checks (from dartz) |
 | `ifSome((T) => void)` | "if let Some" — run only when Some |
 | `toNullable()` | Returns T? |
 | `let<R>((T) => R)` | Transform when Some; returns R? |
@@ -61,7 +61,7 @@ Run the bundled example:
 dart run example/sero_te_amavi_rust_example.dart
 ```
 
-It demonstrates `match`, `unwrap`, `unwrapOr`, `unwrapOrDefault`, `isSome`, `isNone`, `ifSome`, `toNullable`, `let` for Option; and `match`, `unwrap`, `unwrapOr`, `isOk`, `isErr`, `ifOk`, `ifErr` for Either, plus repository-style `Result<Option<Entity>>` patterns.
+It demonstrates `match`, `unwrap`, `unwrapOr`, `unwrapOrDefault`, `isSome()`, `isNone()`, `ifSome`, `toNullable`, `let` for Option; and `match`, `unwrap`, `unwrapOr`, `isOk`, `isErr`, `ifOk`, `ifErr` for Either, plus repository-style `Result<Option<Entity>>` patterns.
 
 ## Testing
 
@@ -69,37 +69,6 @@ From the package root:
 
 ```bash
 dart test
-```
-
-## Rust-style constructors
-
-Use `Some`, `None`, `Ok`, and `Err` for a Rust-like API:
-
-```dart
-import 'package:sero_te_amavi_rust/sero_te_amavi_rust.dart';
-
-// Option (Rust: Some(10), None)
-final opt = Some(42);
-final absent = None;
-opt.ifSome((v) => print(v));
-if (opt.isSome) { /* ... */ }
-final n = opt.unwrapOrDefault();
-
-// Either / Result (Rust: Ok(42), Err("fail"))
-final result = Ok(100);
-final failure = Err<String>('something went wrong');
-result.ifOk((v) => print(v));
-failure.ifErr((e) => print(e));
-if (result.isOk) { /* ... */ }
-result.match(err: (e) => 0, ok: (v) => v);
-
-// expect: unwrap with custom panic message
-final v = Some(10).expect('value required');
-final r = Ok(42).expect('expected success');
-
-// mapErr: transform the error side
-final mapped = Err<int>(404).mapErr((code) => 'HTTP $code');
-// mapped is Err('HTTP 404')
 ```
 
 ## Lint (sero_te_amavi_rust_lint)

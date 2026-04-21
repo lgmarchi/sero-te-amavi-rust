@@ -29,7 +29,8 @@ void main() {
     test('Left throws StateError with message', () {
       expect(
         () => Left<String, int>('err').expect('operation failed'),
-        throwsA(isA<StateError>().having((e) => e.message, 'message', 'operation failed')),
+        throwsA(isA<StateError>()
+            .having((e) => e.message, 'message', 'operation failed')),
       );
     });
   });
@@ -79,7 +80,8 @@ void main() {
       expect(Left<String, List<int>>('x').unwrapOrDefault(), []);
     });
     test('Either<L, Map>', () {
-      expect(Right<String, Map<String, int>>({'a': 1}).unwrapOrDefault(), {'a': 1});
+      expect(Right<String, Map<String, int>>({'a': 1}).unwrapOrDefault(),
+          {'a': 1});
       expect(Left<String, Map<String, int>>('x').unwrapOrDefault(), {});
     });
   });

@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:sero_te_amavi_rust/sero_te_amavi_rust.dart';
 import 'package:test/test.dart';
 
@@ -30,7 +29,8 @@ void main() {
     test('none throws StateError with message', () {
       expect(
         () => none<int>().expect('value was None'),
-        throwsA(isA<StateError>().having((e) => e.message, 'message', 'value was None')),
+        throwsA(isA<StateError>()
+            .having((e) => e.message, 'message', 'value was None')),
       );
     });
   });

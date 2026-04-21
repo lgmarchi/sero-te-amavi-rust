@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'package:dartz/dartz.dart';
 import 'package:sero_te_amavi_rust/sero_te_amavi_rust.dart';
 
 void main() {
@@ -17,10 +16,12 @@ void main() {
 void optionExamples() {
   // Rust-style constructors: Some, None
   final someOpt = Some(42);
-  final noneOpt = None;
+  final noneOpt = none<int>();
   // match (none/some)
-  print('match some: ${someOpt.match(none: () => 'absent', some: (v) => v.toString())}');
-  print('match none: ${noneOpt.match(none: () => 'absent', some: (v) => v.toString())}');
+  print(
+      'match some: ${someOpt.match(none: () => 'absent', some: (v) => v.toString())}');
+  print(
+      'match none: ${noneOpt.match(none: () => 'absent', some: (v) => v.toString())}');
 
   // unwrap, unwrapOr, unwrapOrDefault
   print('unwrap: ${someOpt.unwrap()}');
@@ -28,14 +29,13 @@ void optionExamples() {
   print('unwrapOr (none): ${noneOpt.unwrapOr(0)}');
   final optInt = Some(10);
   final optStr = Some('hello');
-  final optList = Some(<int>[1, 2, 3]);
   print('unwrapOrDefault int: ${optInt.unwrapOrDefault()}');
   print('unwrapOrDefault String: ${optStr.unwrapOrDefault()}');
-  print('unwrapOrDefault List: ${None.unwrapOrDefault()}');
+  print('unwrapOrDefault List: ${none<List<int>>().unwrapOrDefault()}');
 
   // isSome, isNone
-  print('isSome (some): ${someOpt.isSome}, isNone: ${someOpt.isNone}');
-  print('isSome (none): ${noneOpt.isSome}, isNone: ${noneOpt.isNone}');
+  print('isSome (some): ${someOpt.isSome()}, isNone: ${someOpt.isNone()}');
+  print('isSome (none): ${noneOpt.isSome()}, isNone: ${noneOpt.isNone()}');
 
   // ifSome
   someOpt.ifSome((v) => print('ifSome: $v'));
@@ -45,7 +45,7 @@ void optionExamples() {
   print('toNullable (some): ${someOpt.toNullable()}');
   print('toNullable (none): ${noneOpt.toNullable()}');
   print('let (some): ${someOpt.let((v) => v * 2)}');
-  print('let (none): ${noneOpt.let((v) => v * 2)}');
+  print('let (none): ${noneOpt.let((v) => v * 2) ?? 'null'}');
 
   // expect (custom panic message when None)
   print('expect (some): ${someOpt.expect('value was None')}');
@@ -64,7 +64,6 @@ void eitherExamples() {
   // unwrap, unwrapOr, unwrapOrDefault
   print('unwrap ok: ${ok.unwrap()}');
   print('unwrapOr (ok): ${ok.unwrapOr(0)}');
-  print('unwrapOr (err): ${err.unwrapOr(0)}');
   final eitherInt = Ok(7);
   print('unwrapOrDefault: ${eitherInt.unwrapOrDefault()}');
 
@@ -88,7 +87,7 @@ void eitherExamples() {
 void realWorldPatterns() {
   // Repository-style Result<Option<Entity>> (getById)
   Either<String, Option<Map<String, dynamic>>> getById(String id) {
-    if (id == 'missing') return Ok(None);
+    if (id == 'missing') return Ok(none<Map<String, dynamic>>());
     if (id == 'error') return Err('DB error');
     return Ok(Some({'id': id, 'name': 'Entity'}));
   }

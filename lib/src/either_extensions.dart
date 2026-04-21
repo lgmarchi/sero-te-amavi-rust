@@ -6,7 +6,7 @@ extension EitherMatch<L, R> on Either<L, R> {
     required R2 Function(L) err,
     required R2 Function(R) ok,
   }) =>
-    fold(err, ok);
+      fold(err, ok);
 }
 
 /// Returns the right value or throws if Left. Prefer [match] for explicit handling.

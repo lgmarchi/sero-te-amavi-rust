@@ -1,4 +1,4 @@
-## 1.0.0
+## 0.1.0
 
 - Initial release.
 - Option: match, unwrap, unwrapOr, unwrapOrDefault, isSome, isNone, ifSome, toNullable, let.

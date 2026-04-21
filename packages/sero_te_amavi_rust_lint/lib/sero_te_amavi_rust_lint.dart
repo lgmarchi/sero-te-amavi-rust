@@ -1,4 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/error/error.dart' hide LintCode;
+import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 PluginBase createPlugin() => _SeroTeAmaviRustLinter();
@@ -18,8 +22,7 @@ class UseMatchInsteadOfFold extends DartLintRule {
 
   static const _code = LintCode(
     name: 'use_match_instead_of_fold',
-    problemMessage:
-        'Use match instead of fold for Option and Result. Prefer '
+    problemMessage: 'Use match instead of fold for Option and Result. Prefer '
         'result.match(err: (f) => ..., ok: (v) => ...) or '
         'option.match(none: () => ..., some: (v) => ...).',
     correctionMessage: 'Replace fold with match.',
@@ -42,7 +45,6 @@ class UseMatchInsteadOfFold extends DartLintRule {
       if (!_isFunctionExpression(firstArg)) return;
 
       final unit = node.root;
-      if (unit == null) return;
 
       if (!_importsDartz(unit)) return;
 
@@ -60,8 +62,8 @@ class UseMatchInsteadOfFold extends DartLintRule {
     if (unit is! CompilationUnit) return false;
     for (final directive in unit.directives) {
       if (directive is ImportDirective) {
-        final uri = directive.uri.stringValue ?? '';
-        if (uri.startsWith('package:dartz')) return true;
+        final uri = directive.uri.stringValue;
+        if (uri != null && uri.startsWith('package:dartz')) return true;
       }
     }
     return false;

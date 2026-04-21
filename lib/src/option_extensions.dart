@@ -6,7 +6,7 @@ extension OptionMatch<T> on Option<T> {
     required R Function() none,
     required R Function(T) some,
   }) =>
-    fold(none, some);
+      fold(none, some);
 }
 
 /// Returns the value or throws if None (use only when you know it's Some).

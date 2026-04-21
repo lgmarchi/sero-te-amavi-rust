@@ -10,7 +10,7 @@ import 'src/failure.dart';
 // Export Option, Either, Right, Left from dartz; hide constructors to use our Some/None.
 // Hide State so Flutter apps (StatefulWidget) don't get a name collision with dartz's State monad.
 // Hide optionOf from dartz since constructors.dart re-exports a compatible version.
-export 'package:dartz/dartz.dart' hide none, some, None, Some, State, optionOf;
+export 'package:dartz/dartz.dart' hide None, Some, State, optionOf;
 
 export 'src/constructors.dart';
 export 'src/option_extensions.dart';
