@@ -9,7 +9,7 @@ Named after St. Augustine, *Confessions*: **"Sero te amavi"** — *Late have I l
 ```yaml
 dependencies:
   dartz: ^0.10.1
-  sero_te_amavi_rust: ^1.0.0
+  sero_te_amavi_rust: ^0.1.0
 ```
 
 ## Rust-style constructors
@@ -80,7 +80,7 @@ dev_dependencies:
   custom_lint: ^0.8.0
   sero_te_amavi_rust_lint:
     git:
-      url: https://github.com/catholic-verse-studios/sero_te_amavi_rust.git
+      url: https://github.com/lgmarchi/sero-te-amavi-rust.git
       path: packages/sero_te_amavi_rust_lint
       ref: main
 

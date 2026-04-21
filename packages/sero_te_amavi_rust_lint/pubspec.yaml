@@ -1,8 +1,8 @@
 name: sero_te_amavi_rust_lint
 description: Custom lint rules for sero_te_amavi_rust. Use match instead of fold for Option and Either. Configurable as warning or error in analysis_options.yaml.
 version: 1.0.0
-repository: https://github.com/catholic-verse-studios/sero_te_amavi_rust
-documentation: https://github.com/catholic-verse-studios/sero_te_amavi_rust#readme
+repository: https://github.com/lgmarchi/sero-te-amavi-rust
+documentation: https://github.com/lgmarchi/sero-te-amavi-rust#readme
 license: MIT
 
 environment:
