@@ -73,7 +73,7 @@ dart test
 
 ## Lint (sero_te_amavi_rust_lint)
 
-Optional custom lint to enforce `match` instead of `fold` on Option and Either. Configure severity in your `analysis_options.yaml`:
+Optional custom lints to enforce Rust-like patterns. Configure severity in your `analysis_options.yaml`:
 
 ```yaml
 dev_dependencies:
@@ -91,7 +91,17 @@ analyzer:
 custom_lint:
   rules:
     - use_match_instead_of_fold: error   # or warning
+    - avoid_null_value: warning          # or error
+    - avoid_nullable_type: warning       # or error
 ```
+
+| Rule | Default | Description |
+|------|---------|-------------|
+| `use_match_instead_of_fold` | error | Use `match` instead of `fold` on Option/Either |
+| `avoid_null_value` | warning | Flags `null` literals — use `None` from Option instead |
+| `avoid_nullable_type` | warning | Flags `Type?` annotations — use `Option<Type>` instead |
+
+All rules only activate in files that import `dartz` or `sero_te_amavi_rust`.
 
 ## License
 
